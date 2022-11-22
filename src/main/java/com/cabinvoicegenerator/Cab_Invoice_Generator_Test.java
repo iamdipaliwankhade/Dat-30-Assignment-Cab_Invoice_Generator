@@ -5,18 +5,20 @@ import org.junit.Test;
 
 public class Cab_Invoice_Generator_Test {
 	@Test
-	public void CalculateFareTest()  {
-		Cab_Invoice_Generator obj=new Cab_Invoice_Generator();
-		double test=obj.calculateFare(10, 15);
-		double test1=obj.calculateFare(10, 15)+obj.calculateFare(10, 15);;
-		Assert.assertEquals(230.0, test1, 0.0);
-	}
-	@Test
-	public void MonthFareTest()  {
-		Cab_Invoice_Generator obj=new Cab_Invoice_Generator();
-		Ride[] rides= { new Ride(1,23), new Ride(1,2)};
-		double monthfare=obj.calculateFare(rides);
-		Assert.assertEquals(45.0,monthfare , 0.0);
-		
+	public void givenUserId_shouldReturnInvoiceSummary() {
+		try {
+			String userId = "me.shadab@gmail.com";
+			Ride[] rides = { new Ride(2.0, 5), new Ride(0.1, 1) };
+			Cab_Invoice_Generator.addRides(userId, rides);
+			InvoiceSummary summary;
+
+			summary = Cab_Invoice_Generator.calculateFare(rides, "normal");
+
+			InvoiceSummary invoiceSummary = Cab_Invoice_Generator.getInvoiceSummary(userId);
+			Assert.assertEquals(invoiceSummary, summary);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			System.out.println(e.getMessage());
 		}
+	}
 }
