@@ -6,17 +6,41 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class RideRepository {
-	Map<String, ArrayList<Ride>> userRides;
+	int id;
+	   double totalDistance;
+	   double totalRidesDuration;
 
-	public RideRepository() {
-		this.userRides = new HashMap<String, ArrayList<Ride>>();
-	}
+	    public int getId() {
+	        return id;
+	    }
 
-	public void addRide(String userId, Ride[] rides) {
-		this.userRides.put(userId, new ArrayList<Ride>(Arrays.asList(rides)));
-	}
+	    public void setId(int id) {
+	        this.id = id;
+	    }
 
-	public Ride[] getRides(String userId) {
-		return this.userRides.get(userId).toArray(new Ride[0]);
-	}
+	    public double getTotalDistance() {
+	        return totalDistance;
+	    }
+
+	    public void setTotalDistance(double totalDistance) {
+	        this.totalDistance = totalDistance;
+	    }
+
+	    public double getTotalRidesDuration() {
+	        return totalRidesDuration;
+	    }
+
+	    public void setTotalRidesDuration(double totalRidesDuration) {
+	        this.totalRidesDuration = totalRidesDuration;
+	    }
+
+	    public RideRepository(int id, double totalDistance, double totalRidesDuration) {
+	        this.id = id;
+	        this.totalDistance = totalDistance;
+	        this.totalRidesDuration = totalRidesDuration;
+	    }
+
+	    public double getTotalRideDuration() {
+	        return getTotalRidesDuration();
+	    }
 }
